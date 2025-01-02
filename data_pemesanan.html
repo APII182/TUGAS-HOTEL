@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin - Data Pemesanan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .btn-edit {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .navbar {
+            background-color: #343a40;
+        }
+
+        .navbar .nav-link {
+            color: #ffffff !important;
+            transition: color 0.3s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        .footer {
+            background-color: #ffc107;
+            color: #343a40;
+            font-weight: bold;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        .btn-edit:hover {
+            background-color: #5a6268;
+            color: #fff;
+        }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-delete:hover {
+            background-color: #c82333;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .modal-header {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-dark text-light py-3">
+        <div class="container d-flex align-items-center justify-content-between">
+            <img src="image/APISHOTEL.png" alt="logo" class="img-fluid" style="height: 100px;">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link" href="admin.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="kamar.html">Kamar</a></li>
+                            <li class="nav-item"><a class="nav-link" href="fasilitas.html">Fasilitas</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="data_pemesanan.html">Data Pemesanan</a></li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Tabel Data Pemesanan -->
+        <div class="table-container">
+            <h3 class="mb-4">Data Pemesanan Hotel</h3>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Pemesan</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Nomor Identitas</th>
+                        <th>Tipe Kamar</th>
+                        <th>Durasi Menginap</th>
+                        <th>Tanggal Pesan</th>
+                        <th>Termasuk Breakfast</th>
+                        <th>Diskon</th>
+                        <th>Total Bayar</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="orderTableBody">
+                    <tr>
+                        <td>1</td>
+                        <td>Muhammad Rafly Alifian</td>
+                        <td>Laki-Laki</td>
+                        <td>12341415513271222</td>
+                        <td>Standar</td>
+                        <td>3 hari</td>
+                        <td>18-01-2025</td>
+                        <td>Ya</td>
+                        <td>0%</td>
+                        <td>Rp 1.940.000</td>
+                        <td>
+                            
+                            <button class="btn btn-edit btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                                <i class="bi bi-pencil"></i> Edit
+                            </button>
+                            <button class="btn btn-delete btn-sm" onclick="deleteOrder(1)">
+                                <i class="bi bi-trash"></i> Hapus
+                            </button>
+                            <tbody id="orderTableBody">
+                                <tr>
+                                    <td>2</td>
+                                    <td>LupLep</td>
+                                    <td>Perempuan</td>
+                                    <td>213213214114541</td>
+                                    <td>deluxe</td>
+                                    <td>3 hari</td>
+                                    <td>13-01-2025</td>
+                                    <td>Ya</td>
+                                    <td>10%</td>
+                                    <td>Rp 5.400.000</td>
+                                    <td>
+                                        
+                                        <button class="btn btn-edit btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </button>
+                                        <button class="btn btn-delete btn-sm" onclick="deleteOrder(1)">
+                                            <i class="bi bi-trash"></i> Hapus
+                                        </button>
+                                        <tbody id="orderTableBody">
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Ucup</td>
+                                                <td>Laki-Laki</td>
+                                                <td>1243141545665121</td>
+                                                <td>Suite</td>
+                                                <td>3 hari</td>
+                                                <td>18-01-2025</td>
+                                                <td>Ya</td>
+                                                <td>10%</td>
+                                                <td>Rp 12.940.000</td>
+                                                <td>
+                                                    
+                                                    <button class="btn btn-edit btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                                                        <i class="bi bi-pencil"></i> Edit
+                                                    </button>
+                                                    <button class="btn btn-delete btn-sm" onclick="deleteOrder(1)">
+                                                        <i class="bi bi-trash"></i> Hapus
+                                                    </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Edit -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Pemesanan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <div class="mb-3">
+                            <label for="namaPemesan" class="form-label">Nama Pemesan</label>
+                            <input type="text" class="form-control" id="namaPemesan" placeholder="Nama Pemesan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipeKamar" class="form-label">Tipe Kamar</label>
+                            <select class="form-select" id="tipeKamar">
+                                <option value="Standar">Standar</option>
+                                <option value="Deluxe">Deluxe</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="durasi" class="form-label">Durasi Menginap</label>
+                            <input type="number" class="form-control" id="durasi" placeholder="Durasi Menginap (hari)">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteOrder(orderNo) {
+            if (confirm('Apakah Anda yakin ingin menghapus pemesanan ini?')) {
+                document.querySelector(`#orderTableBody tr:nth-child(${orderNo})`).remove();
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
